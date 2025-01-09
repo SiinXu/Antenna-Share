@@ -23,91 +23,91 @@
     </div>
     <div
       v-if="!allSocialLinksAreEmpty"
-      class="grid grid-cols-8 gap-2 justify-center items-center max-w-md mx-auto relative z-10"
+      class="flex flex-wrap justify-center gap-4 max-w-[280px] mx-auto relative z-10 px-4"
     >
-      <span v-if="acc.f" class="p-1 flex justify-center">
-        <a :href="acc.f" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.f">
+        <a :href="acc.f" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="simple-icons:meta" class="h-6 w-6 text-[#0668E1]" />
         </a>
       </span>
-      <span v-if="acc.t" class="p-1 flex justify-center">
-        <a :href="acc.t" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.t">
+        <a :href="acc.t" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="simple-icons:twitter" class="h-6 w-6 text-[#1DA1F2]" />
         </a>
       </span>
-      <span v-if="acc.ig" class="p-1 flex justify-center">
-        <a :href="acc.ig" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.ig">
+        <a :href="acc.ig" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="simple-icons:instagram" class="h-6 w-6 text-[#E1306C]" />
         </a>
       </span>
-      <span v-if="acc.m" class="p-1 flex justify-center">
-        <a :href="acc.m" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.m">
+        <a :href="acc.m" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="ph:envelope-duotone" class="h-6 w-6" />
         </a>
       </span>
-      <span v-if="acc.gh" class="p-1 flex justify-center">
-        <a :href="acc.gh" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.gh">
+        <a :href="acc.gh" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="simple-icons:github" class="h-6 w-6 text-[#181717]" />
         </a>
       </span>
-      <span v-if="acc.tg" class="p-1 flex justify-center">
-        <a :href="acc.tg" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.tg">
+        <a :href="acc.tg" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="simple-icons:telegram" class="h-6 w-6 text-[#0088CC]" />
         </a>
       </span>
-      <span v-if="acc.l" class="p-1 flex justify-center">
-        <a :href="acc.l" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.l">
+        <a :href="acc.l" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="simple-icons:linkedin" class="h-6 w-6 text-[#0077B5]" />
         </a>
       </span>
-      <span v-if="acc.e" class="p-1 flex justify-center">
-        <a :href="'mailto:' + acc.e" rel="noopener noreferrer">
+      <span v-if="acc.e">
+        <a :href="'mailto:' + acc.e" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="logos:google-gmail" class="h-6 w-6" />
         </a>
       </span>
-      <span v-if="acc.w" class="p-1 flex justify-center">
-        <a :href="'https://wa.me/' + acc.w" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.w">
+        <a :href="'https://wa.me/' + acc.w" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="simple-icons:whatsapp" class="h-6 w-6 text-[#25D366]" />
         </a>
       </span>
-      <span v-if="acc.y" class="p-1 flex justify-center">
-        <a :href="acc.y" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.y">
+        <a :href="acc.y" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="simple-icons:youtube" class="h-6 w-6 text-[#FF0000]" />
         </a>
       </span>
       <!-- 微信 -->
-      <span v-if="acc.wx" class="p-1 flex justify-center">
-        <a :href="acc.wx" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.wx">
+        <a :href="acc.wx" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="simple-icons:wechat" class="h-6 w-6 text-[#07C160]" />
         </a>
       </span>
       <!-- 抖音 -->
-      <span v-if="acc.dy" class="p-1 flex justify-center">
-        <a :href="acc.dy" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.dy">
+        <a :href="acc.dy" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="simple-icons:tiktok" class="h-6 w-6 text-[#69C9FF]" />
         </a>
       </span>
       <!-- 小红书 -->
-      <span v-if="acc.xhs" class="p-1 flex justify-center">
-        <a :href="acc.xhs" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.xhs">
+        <a :href="acc.xhs" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="ri:book-2-fill" class="h-6 w-6 text-[#FE2C55]" />
         </a>
       </span>
       <!-- 微博 -->
-      <span v-if="acc.wb" class="p-1 flex justify-center">
-        <a :href="acc.wb" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.wb">
+        <a :href="acc.wb" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="simple-icons:sinaweibo" class="h-6 w-6 text-[#E6162D]" />
         </a>
       </span>
       <!-- 哔哩哔哩 -->
-      <span v-if="acc.bl" class="p-1 flex justify-center">
-        <a :href="acc.bl" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.bl">
+        <a :href="acc.bl" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="simple-icons:bilibili" class="h-6 w-6 text-[#00A1D6]" />
         </a>
       </span>
       <!-- 知乎 -->
-      <span v-if="acc.zh" class="p-1 flex justify-center">
-        <a :href="acc.zh" target="_blank" rel="noopener noreferrer">
+      <span v-if="acc.zh">
+        <a :href="acc.zh" target="_blank" rel="noopener noreferrer" class="p-2 hover:opacity-80">
           <icon name="simple-icons:zhihu" class="h-6 w-6 text-[#0084FF]" />
         </a>
       </span>
@@ -123,9 +123,25 @@
       >
         <span class="flex-1 flex items-center">
           <span v-if="link.i" class="mr-2">
-            <img v-if="isImageUrl(link.i)" :src="link.i" alt="link image" class="h-6 w-6 rounded-full" />
-            <icon v-else-if="link.i.startsWith('simple-icons:') || link.i.startsWith('ph:')" :name="link.i" class="h-6 w-6" />
-            <img v-else :src="link.i" alt="link image" class="h-6 w-6 rounded-full" />
+            <template v-if="isImageUrl(link.i)">
+              <img 
+                :src="link.i" 
+                :alt="link.l"
+                @error="handleImageError(link)" 
+                class="h-6 w-6 rounded-full object-cover"
+              />
+            </template>
+            <template v-else-if="link.i.startsWith('simple-icons:') || link.i.startsWith('ph:')">
+              <icon :name="link.i" class="h-6 w-6" />
+            </template>
+            <template v-else>
+              <img 
+                :src="`https://www.google.com/s2/favicons?domain=${getDomain(link.u)}&sz=128`"
+                :alt="link.l"
+                @error="handleImageError(link)" 
+                class="h-6 w-6 rounded-full object-cover"
+              />
+            </template>
           </span>
           <span>{{ link.l }}</span>
         </span>
@@ -172,12 +188,32 @@ const allSocialLinksAreEmpty = computed(() => {
 });
 
 const isImageUrl = (url) => {
-  return url.match(/\.(jpeg|jpg|gif|png|webp|bmp|svg)$/);
+  if (!url) return false;
+  // 检查是否是图片扩展名
+  if (url.match(/\.(jpeg|jpg|gif|png|webp|bmp|svg)$/i)) return true;
+  // 检查是否是图片URL（包含图片相关关键词）
+  if (url.match(/\/(img|image|photo|avatar|logo)\//i)) return true;
+  // 检查是否是常见图片服务
+  if (url.match(/(gravatar\.com|avatars\.githubusercontent\.com)/i)) return true;
+  return false;
 };
 
-const showQRCode = (wechatId) => {
-  alert(`微信公众号：${wechatId}\n请扫描二维码关注`);
+const getDomain = (url) => {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return '';
+  }
 };
+
+const handleImageError = (link) => {
+  // 如果图片加载失败，尝试使用 favicon
+  const img = event.target;
+  if (!img.src.includes('google.com/s2/favicons')) {
+    img.src = `https://www.google.com/s2/favicons?domain=${getDomain(link.u)}&sz=128`;
+  }
+};
+
 </script>
 <style scoped>
 .preview-container {
