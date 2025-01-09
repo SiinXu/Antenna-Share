@@ -38,7 +38,7 @@
     </div>
     <div
       v-if="!allSocialLinksAreEmpty"
-      class="flex flex-wrap justify-center gap-1 mx-8 relative z-10 py-1 max-w-[180px]"
+      class="flex flex-wrap justify-center gap-1 mx-8 relative z-10 py-1"
     >
       <!-- 中国社交媒体 -->
       <span v-if="acc.wx">
@@ -177,14 +177,6 @@ const props = defineProps({
 
 const allSocialLinksAreEmpty = computed(() => {
   return (
-    // 中国社交媒体
-    !props.acc.wx &&
-    !props.acc.dy &&
-    !props.acc.xhs &&
-    !props.acc.wb &&
-    !props.acc.bl &&
-    !props.acc.zh &&
-    // 国际社交媒体
     !props.acc.f &&
     !props.acc.t &&
     !props.acc.ig &&
@@ -193,7 +185,13 @@ const allSocialLinksAreEmpty = computed(() => {
     !props.acc.l &&
     !props.acc.e &&
     !props.acc.w &&
-    !props.acc.y
+    !props.acc.y &&
+    !props.acc.wx &&
+    !props.acc.dy &&
+    !props.acc.wb &&
+    !props.acc.xhs &&
+    !props.acc.bl &&
+    !props.acc.zh
   );
 });
 
