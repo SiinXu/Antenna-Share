@@ -35,7 +35,7 @@
     </div>
     <div
       v-if="!allSocialLinksAreEmpty"
-      class="flex flex-wrap justify-center gap-1 max-w-[280px] mx-auto relative z-10 py-2"
+      class="flex flex-wrap justify-center gap-1 max-w-[220px] mx-auto relative z-10 py-1"
     >
       <!-- 中国社交媒体 -->
       <span v-if="acc.wx">
