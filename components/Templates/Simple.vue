@@ -10,14 +10,14 @@
     <div class="text-center relative z-10">
       <div class="relative mx-auto" :class="acc.i ? 'w-32 h-32' : 'w-24 h-24'">
         <!-- 渐变光圈动效 -->
-        <div v-if="acc.i" class="absolute inset-[-4px] rounded-full">
-          <div class="w-full h-full rounded-full bg-gradient-to-r from-rose-300 via-indigo-300 to-teal-300 animate-gradient-xy opacity-70 blur-sm"></div>
+        <div v-if="acc.i" class="absolute inset-[-12px] rounded-full">
+          <div class="w-full h-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 opacity-60 blur-xl animate-gradient-x"></div>
         </div>
         <div v-if="acc.i" class="absolute inset-[-2px] rounded-full animate-spin-slow">
-          <div class="w-full h-full rounded-full bg-gradient-to-r from-pink-400 via-sky-400 to-emerald-400"></div>
+          <div class="w-full h-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400"></div>
         </div>
         <!-- 头像 -->
-        <div class="absolute inset-0.5 rounded-full overflow-hidden bg-white shadow-lg">
+        <div class="absolute inset-0 rounded-full overflow-hidden bg-white shadow-lg">
           <img
             v-if="acc.i"
             :src="acc.i"
@@ -238,8 +238,6 @@ const handleImageError = (link) => {
 
 /* 头像发光效果 */
 .avatar-container {
-  width: 128px;
-  height: 128px;
   position: relative;
   margin: 0 auto;
 }
@@ -385,17 +383,30 @@ p {
 }
 
 /* 添加渐变动画 */
-@keyframes gradientSpin {
-  0% {
-    transform: rotate(0deg);
+@keyframes gradient-x {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
   }
-  100% {
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 8s ease infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes spin {
+  to {
     transform: rotate(360deg);
   }
 }
 
 .animate-spin-slow {
-  animation: gradientSpin 8s linear infinite;
+  animation: spin 8s linear infinite;
 }
 
 @keyframes gradientXY {
@@ -414,6 +425,7 @@ p {
 
 .animate-spin-slow {
   animation: spin 8s linear infinite;
+  transform-box: fill-box;
 }
 
 @keyframes spin {
