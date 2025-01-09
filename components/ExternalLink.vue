@@ -4,15 +4,19 @@
       :href="url"
       target="_blank"
       rel="noopener | noreferrer"
-      class="flex items-center space-x-4 p-4 rounded-lg bg-slate-50 hover:bg-slate-100"
+      class="glass-card w-full"
     >
-      <img 
-        :src="`https://www.google.com/s2/favicons?domain=${getDomain(url)}&sz=128`"
-        class="w-6 h-6 object-contain"
-        :alt="label"
-      />
-      <span class="flex-1 font-medium text-sm text-slate-700">{{ label }}</span>
-      <icon name="ph:arrow-up-right" class="h-4 w-4 text-slate-400" />
+      <span class="flex-1 flex items-center">
+        <span class="mr-2">
+          <img 
+            :src="`https://www.google.com/s2/favicons?domain=${getDomain(url)}&sz=128`"
+            class="h-6 w-6 rounded-full"
+            :alt="label"
+          />
+        </span>
+        <span>{{ label }}</span>
+      </span>
+      <icon name="ph:arrow-up-right-bold" class="h-4 w-4" />
     </a>
   </li>
 </template>
