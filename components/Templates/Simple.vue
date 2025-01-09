@@ -1,22 +1,29 @@
 <template>
-  <main class="p-4 bg-white h-full w-full space-y-8 pt-12 max-w-lg mx-auto">
-    <div class="text-center">
+  <main class="preview-container h-full w-full space-y-8 pt-12 max-w-lg mx-auto relative">
+    <!-- 背景动画光团 -->
+    <div class="glow-balls">
+      <div class="ball ball-1"></div>
+      <div class="ball ball-2"></div>
+      <div class="ball ball-3"></div>
+    </div>
+
+    <div class="text-center relative z-10">
       <div
         v-if="acc.i"
-        class="h-20 w-20 rounded-full overflow-hidden ring ring-slate-200 mx-auto"
+        class="avatar-container mx-auto"
       >
-        <img :src="acc.i" alt="name" class="h-full w-full object-cover" />
+        <img :src="acc.i" alt="name" class="avatar-image" />
       </div>
-      <h1 v-if="acc.n" class="text-2xl font-bold mt-4 text-slate-800">
+      <h1 v-if="acc.n" class="text-2xl font-bold mt-4 text-white">
         {{ acc.n }}
       </h1>
-      <p v-if="acc.d" class="text-sm mt-2 text-slate-600">
+      <p v-if="acc.d" class="text-sm mt-2 text-white/80">
         {{ acc.d }}
       </p>
     </div>
     <div
       v-if="!allSocialLinksAreEmpty"
-      class="flex items-center justify-center flex-wrap gap-2"
+      class="flex items-center justify-center flex-wrap gap-2 relative z-10"
     >
       <span v-if="acc.f" class="p-1">
         <a :href="acc.f" target="_blank" rel="noopener noreferrer">
@@ -105,15 +112,35 @@
         </a>
       </span>
     </div>
-    <ul class="space-y-2">
-      <ExternalLink
-        v-for="(link, id) in acc.ls"
-        :label="link.l"
-        :icon="link.i"
-        :url="link.u"
-        :key="id"
-      />
-    </ul>
+    <div v-if="acc.ls?.length" class="space-y-4 px-4 relative z-10">
+      <a
+        v-for="link in acc.ls"
+        :key="link.u"
+        :href="link.u"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="glass-card"
+      >
+        <span class="flex-1 flex items-center">
+          <span v-if="link.i" class="mr-2">
+            <img v-if="link.i.match(/\.(jpeg|jpg|gif|png)$/)" :src="link.i" alt="link image" class="h-6 w-6 rounded-full" />
+            <icon v-else :name="link.i" class="h-6 w-6" />
+          </span>
+          <span>{{ link.l }}</span>
+        </span>
+        <icon name="ph:arrow-up-right-bold" class="h-4 w-4" />
+      </a>
+    </div>
+    <div class="absolute bottom-4 left-0 right-0 text-center z-20">
+      <a 
+        href="https://antenna-share.incidental.site/" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="inline-flex items-center px-3 py-1.5 text-gray-400/60 text-xs font-light tracking-wider hover:text-gray-400/90 active:text-gray-400/50 transition-colors rounded-full hover:bg-gray-50/50 active:bg-gray-100/50"
+      >
+        Made with Antenna
+      </a>
+    </div>
   </main>
 </template>
 <script setup>
@@ -138,7 +165,8 @@ const allSocialLinksAreEmpty = computed(() => {
     !props.acc.wx &&
     !props.acc.dy &&
     !props.acc.wb &&
-    !props.acc.xhs
+    !props.acc.xhs &&
+    !props.acc.bl
   );
 });
 
@@ -146,4 +174,178 @@ const showQRCode = (wechatId) => {
   alert(`微信公众号：${wechatId}\n请扫描二维码关注`);
 };
 </script>
-<style scoped></style>
+<style scoped>
+.preview-container {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 1) 0%,
+    rgba(243, 244, 255, 0.9) 30%,
+    rgba(238, 242, 255, 0.9) 50%,
+    rgba(230, 230, 255, 0.9) 70%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  overflow: hidden;
+  position: relative;
+}
+
+/* 头像发光效果 */
+.avatar-container {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+
+.avatar-container::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, #e2e8f0, #cbd5e1, #e2e8f0);
+  border-radius: 50%;
+  z-index: -1;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* 毛玻璃卡片效果 */
+.glass-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: #1f2937;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.glass-card img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+/* 背景光团 */
+.glow-balls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ball {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  mix-blend-mode: soft-light;
+}
+
+.ball-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at 30% 40%,
+    rgba(167, 139, 250, 0.3),
+    rgba(139, 92, 246, 0.1)
+  );
+  top: -200px;
+  left: -100px;
+  animation: float1 25s ease-in-out infinite;
+}
+
+.ball-2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at 70% 60%,
+    rgba(147, 197, 253, 0.3),
+    rgba(96, 165, 250, 0.1)
+  );
+  top: 40%;
+  right: -150px;
+  animation: float2 20s ease-in-out infinite;
+}
+
+.ball-3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(196, 181, 253, 0.3),
+    rgba(167, 139, 250, 0.1)
+  );
+  bottom: -100px;
+  left: 30%;
+  animation: float3 22s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes float1 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(100px, 100px) rotate(45deg);
+  }
+}
+
+@keyframes float2 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-100px, -50px) rotate(-30deg);
+  }
+}
+
+@keyframes float3 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(50px, -100px) rotate(30deg);
+  }
+}
+
+/* 文字颜色调整 */
+h1 {
+  color: #1f2937 !important;
+}
+
+p {
+  color: #4b5563 !important;
+}
+</style>
