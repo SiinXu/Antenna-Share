@@ -128,9 +128,10 @@ const prefillDemoData = () => {
 };
 
 const publish = () => {
-  const url = `${window.location.origin}/1?data=${encodeData(data.value)}`;
+  const encodedData = encodeData(data.value);
+  const url = `${window.location.origin}/1?data=${encodeURIComponent(encodedData)}`;
   navigator.clipboard.writeText(url).then(() => {
-    alert("Link copied to clipboard");
+    alert("链接已复制到剪贴板");
   });
 };
 </script>

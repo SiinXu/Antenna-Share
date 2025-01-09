@@ -123,8 +123,9 @@
       >
         <span class="flex-1 flex items-center">
           <span v-if="link.i" class="mr-2">
-            <img v-if="link.i.match(/\.(jpeg|jpg|gif|png)$/)" :src="link.i" alt="link image" class="h-6 w-6 rounded-full" />
-            <icon v-else :name="link.i" class="h-6 w-6" />
+            <img v-if="isImageUrl(link.i)" :src="link.i" alt="link image" class="h-6 w-6 rounded-full" />
+            <icon v-else-if="link.i.startsWith('simple-icons:') || link.i.startsWith('ph:')" :name="link.i" class="h-6 w-6" />
+            <img v-else :src="link.i" alt="link image" class="h-6 w-6 rounded-full" />
           </span>
           <span>{{ link.l }}</span>
         </span>
@@ -169,6 +170,10 @@ const allSocialLinksAreEmpty = computed(() => {
     !props.acc.bl
   );
 });
+
+const isImageUrl = (url) => {
+  return url.match(/\.(jpeg|jpg|gif|png|webp|bmp|svg)$/);
+};
 
 const showQRCode = (wechatId) => {
   alert(`微信公众号：${wechatId}\n请扫描二维码关注`);
