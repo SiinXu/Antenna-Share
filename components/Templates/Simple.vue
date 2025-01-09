@@ -10,11 +10,14 @@
     <div class="text-center relative z-10">
       <div class="relative mx-auto" :class="acc.i ? 'w-32 h-32' : 'w-24 h-24'">
         <!-- 渐变光圈动效 -->
-        <div v-if="acc.i" class="absolute inset-0 rounded-full animate-spin-slow">
-          <div class="w-full h-full rounded-full bg-gradient-to-r from-purple-100 to-blue-100 animate-pulse"></div>
+        <div v-if="acc.i" class="absolute inset-[-4px] rounded-full">
+          <div class="w-full h-full rounded-full bg-gradient-to-r from-purple-400 via-pink-300 to-blue-400 animate-gradient-xy opacity-70 blur-sm"></div>
+        </div>
+        <div v-if="acc.i" class="absolute inset-[-2px] rounded-full animate-spin-slow">
+          <div class="w-full h-full rounded-full bg-gradient-to-r from-violet-500 via-fuchsia-400 to-cyan-400"></div>
         </div>
         <!-- 头像 -->
-        <div class="absolute inset-1 rounded-full overflow-hidden bg-white">
+        <div class="absolute inset-0.5 rounded-full overflow-hidden bg-white shadow-lg">
           <img
             v-if="acc.i"
             :src="acc.i"
@@ -35,7 +38,7 @@
     </div>
     <div
       v-if="!allSocialLinksAreEmpty"
-      class="flex flex-wrap justify-center gap-1 max-w-[220px] mx-auto relative z-10 py-1"
+      class="flex flex-wrap justify-center gap-1 w-[308px] mx-auto relative z-10 py-1"
     >
       <!-- 中国社交媒体 -->
       <span v-if="acc.wx">
@@ -393,5 +396,29 @@ p {
 
 .animate-spin-slow {
   animation: gradientSpin 8s linear infinite;
+}
+
+@keyframes gradientXY {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-xy {
+  animation: gradientXY 3s ease infinite;
+  background-size: 200% 200%;
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>
