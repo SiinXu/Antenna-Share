@@ -11,10 +11,10 @@
       <div class="relative mx-auto" :class="acc.i ? 'w-32 h-32' : 'w-24 h-24'">
         <!-- 渐变光圈动效 -->
         <div v-if="acc.i" class="absolute inset-[-4px] rounded-full">
-          <div class="w-full h-full rounded-full bg-gradient-to-r from-purple-400 via-pink-300 to-blue-400 animate-gradient-xy opacity-70 blur-sm"></div>
+          <div class="w-full h-full rounded-full bg-gradient-to-r from-rose-300 via-indigo-300 to-teal-300 animate-gradient-xy opacity-70 blur-sm"></div>
         </div>
         <div v-if="acc.i" class="absolute inset-[-2px] rounded-full animate-spin-slow">
-          <div class="w-full h-full rounded-full bg-gradient-to-r from-violet-500 via-fuchsia-400 to-cyan-400"></div>
+          <div class="w-full h-full rounded-full bg-gradient-to-r from-pink-400 via-sky-400 to-emerald-400"></div>
         </div>
         <!-- 头像 -->
         <div class="absolute inset-0.5 rounded-full overflow-hidden bg-white shadow-lg">
@@ -38,7 +38,7 @@
     </div>
     <div
       v-if="!allSocialLinksAreEmpty"
-      class="flex flex-wrap justify-center gap-1 w-[308px] mx-auto relative z-10 py-1"
+      class="flex flex-wrap justify-center gap-1 mx-8 relative z-10 py-1"
     >
       <!-- 中国社交媒体 -->
       <span v-if="acc.wx">
