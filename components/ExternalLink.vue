@@ -9,7 +9,7 @@
       <span class="flex-1 flex items-center">
         <span class="mr-2">
           <img 
-            :src="`https://www.google.com/s2/favicons?domain=${getDomain(url)}&sz=128`"
+            :src="favicon"
             class="h-6 w-6 rounded-full"
             :alt="label"
           />
@@ -22,16 +22,21 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+
 const props = defineProps({
   label: String,
   url: String,
 });
 
-const getDomain = (url) => {
+const favicon = ref('')
+
+onMounted(async () => {
   try {
-    return new URL(url).hostname;
-  } catch {
-    return '';
+    const url = new URL(props.url)
+    favicon.value = `https://www.google.com/s2/favicons?domain=${url.hostname}&sz=128`
+  } catch (error) {
+    console.error('Invalid URL:', error)
   }
-};
+})
 </script>

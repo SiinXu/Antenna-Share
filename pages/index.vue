@@ -9,6 +9,12 @@
         />
         <app-form-hr />
         <app-form-social-links
+          v-model:wechat="data.wx"
+          v-model:douyin="data.dy"
+          v-model:xiaohongshu="data.xhs"
+          v-model:weibo="data.wb"
+          v-model:bilibili="data.bl"
+          v-model:zhihu="data.zh"
           v-model:facebook="data.f"
           v-model:twitter="data.t"
           v-model:instagram="data.ig"
@@ -18,10 +24,6 @@
           v-model:email="data.e"
           v-model:whatsapp="data.w"
           v-model:youtube="data.y"
-          v-model:wechat="data.wx"
-          v-model:douyin="data.dy"
-          v-model:weibo="data.wb"
-          v-model:xiaohongshu="data.xhs"
         />
         <app-form-hr />
         <app-form-links v-model="data.ls" />
@@ -56,6 +58,12 @@ const data = ref({
   n: "",
   d: "",
   i: "",
+  wx: "",
+  dy: "",
+  xhs: "",
+  wb: "",
+  bl: "",
+  zh: "",
   f: "",
   t: "",
   ig: "",
@@ -65,10 +73,6 @@ const data = ref({
   e: "",
   w: "",
   y: "",
-  wx: "",
-  dy: "",
-  wb: "",
-  xhs: "",
   ls: [],
 });
 
@@ -77,6 +81,12 @@ const clearData = () => {
     n: "",
     d: "",
     i: "",
+    wx: "",
+    dy: "",
+    xhs: "",
+    wb: "",
+    bl: "",
+    zh: "",
     f: "",
     t: "",
     ig: "",
@@ -86,10 +96,6 @@ const clearData = () => {
     e: "",
     w: "",
     y: "",
-    wx: "",
-    dy: "",
-    wb: "",
-    xhs: "",
     ls: [],
   };
   isDemo.value = false;
@@ -100,6 +106,12 @@ const prefillDemoData = () => {
     n: "张三",
     d: "你好，我是张三，一个热爱生活的人",
     i: "https://avatars.githubusercontent.com/u/583231",
+    wx: "wxid_zhangsan",
+    dy: "https://www.douyin.com/user/zhangsan",
+    xhs: "https://www.xiaohongshu.com/user/zhangsan",
+    wb: "https://weibo.com/u/zhangsan",
+    bl: "https://space.bilibili.com/zhangsan",
+    zh: "https://www.zhihu.com/people/zhangsan",
     f: "https://www.facebook.com/zhangsan",
     t: "https://twitter.com/zhangsan",
     ig: "https://www.instagram.com/zhangsan",
@@ -109,10 +121,6 @@ const prefillDemoData = () => {
     w: "+8613800138000",
     y: "https://youtube.com/@zhangsan",
     l: "https://linkedin.com/in/zhangsan",
-    wx: "wxid_zhangsan",
-    dy: "https://www.douyin.com/user/zhangsan",
-    wb: "https://weibo.com/u/zhangsan",
-    xhs: "https://www.xiaohongshu.com/user/zhangsan",
     ls: [
       {
         l: "我的博客",
