@@ -33,20 +33,9 @@ module.exports = {
     extend: {
       animation: {
         'spin-slow': 'spin 8s linear infinite',
-        'gradient-x': 'gradient-x 8s ease infinite',
         'gradient-xy': 'gradient-xy 3s ease infinite',
       },
       keyframes: {
-        'gradient-x': {
-          '0%, 100%': {
-            'background-size': '200% 200%',
-            'background-position': 'left center'
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center'
-          }
-        },
         'gradient-xy': {
           '0%, 100%': {
             'background-size': '400% 400%',
@@ -62,12 +51,12 @@ module.exports = {
   },
   plugins: [require("@tailwindcss/forms")],
   content: [
-    "./components/**/*.{js,vue,ts}",
-    "./layouts/**/*.vue",
-    "./pages/**/*.vue",
-    "./composables/**/*.{js,ts}",
-    "./plugins/**/*.{js,ts}",
-    "./App.{js,ts,vue}",
-    "./app.{js,ts,vue}",
+    `components/**/*.{vue,js}`,
+    `layouts/**/*.vue`,
+    `pages/**/*.vue`,
+    `composables/**/*.{js,ts}`,
+    `plugins/**/*.{js,ts}`,
+    `App.{js,ts,vue}`,
+    `app.{js,ts,vue}`,
   ],
 };
