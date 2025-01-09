@@ -8,11 +8,23 @@
     </div>
 
     <div class="text-center relative z-10">
-      <div
-        v-if="acc.i"
-        class="avatar-container mx-auto"
-      >
-        <img :src="acc.i" alt="name" class="avatar-image" />
+      <div class="relative mx-auto" :class="acc.i ? 'w-32 h-32' : 'w-24 h-24'">
+        <!-- 渐变光圈动效 -->
+        <div v-if="acc.i" class="absolute inset-0 rounded-full animate-spin-slow">
+          <div class="w-full h-full rounded-full bg-gradient-to-r from-purple-100 to-blue-100 animate-pulse"></div>
+        </div>
+        <!-- 头像 -->
+        <div class="absolute inset-1 rounded-full overflow-hidden bg-white">
+          <img
+            v-if="acc.i"
+            :src="acc.i"
+            :alt="acc.n"
+            class="w-full h-full object-cover"
+          />
+          <div v-else class="w-full h-full bg-gray-200 flex items-center justify-center">
+            <icon name="ph:user-duotone" class="w-12 h-12 text-gray-400" />
+          </div>
+        </div>
       </div>
       <h1 v-if="acc.n" class="text-2xl font-bold mt-4 text-slate-800">
         {{ acc.n }}
@@ -23,89 +35,86 @@
     </div>
     <div
       v-if="!allSocialLinksAreEmpty"
-      class="flex flex-col items-center gap-1 max-w-[280px] mx-auto relative z-10 py-2"
+      class="flex flex-wrap justify-center gap-1 max-w-[280px] mx-auto relative z-10 py-2"
     >
-      <!-- 第一行 -->
-      <div class="flex gap-1">
-        <span v-if="acc.f">
-          <a :href="acc.f" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:meta" class="h-5 w-5 text-[#0668E1]" />
-          </a>
-        </span>
-        <span v-if="acc.t">
-          <a :href="acc.t" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:twitter" class="h-5 w-5 text-[#1DA1F2]" />
-          </a>
-        </span>
-        <span v-if="acc.ig">
-          <a :href="acc.ig" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:instagram" class="h-5 w-5 text-[#E1306C]" />
-          </a>
-        </span>
-        <span v-if="acc.gh">
-          <a :href="acc.gh" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:github" class="h-5 w-5 text-[#181717]" />
-          </a>
-        </span>
-        <span v-if="acc.tg">
-          <a :href="acc.tg" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:telegram" class="h-5 w-5 text-[#0088CC]" />
-          </a>
-        </span>
-        <span v-if="acc.l">
-          <a :href="acc.l" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:linkedin" class="h-5 w-5 text-[#0077B5]" />
-          </a>
-        </span>
-        <span v-if="acc.e">
-          <a :href="'mailto:' + acc.e" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="logos:google-gmail" class="h-5 w-5" />
-          </a>
-        </span>
-      </div>
-      <!-- 第二行 -->
-      <div class="flex gap-1">
-        <span v-if="acc.w">
-          <a :href="'https://wa.me/' + acc.w" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:whatsapp" class="h-5 w-5 text-[#25D366]" />
-          </a>
-        </span>
-        <span v-if="acc.y">
-          <a :href="acc.y" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:youtube" class="h-5 w-5 text-[#FF0000]" />
-          </a>
-        </span>
-        <span v-if="acc.wx">
-          <a :href="acc.wx" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:wechat" class="h-5 w-5 text-[#07C160]" />
-          </a>
-        </span>
-        <span v-if="acc.dy">
-          <a :href="acc.dy" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:tiktok" class="h-5 w-5 text-[#69C9FF]" />
-          </a>
-        </span>
-        <span v-if="acc.xhs">
-          <a :href="acc.xhs" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="ri:book-2-fill" class="h-5 w-5 text-[#FE2C55]" />
-          </a>
-        </span>
-        <span v-if="acc.wb">
-          <a :href="acc.wb" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:sinaweibo" class="h-5 w-5 text-[#E6162D]" />
-          </a>
-        </span>
-        <span v-if="acc.bl">
-          <a :href="acc.bl" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:bilibili" class="h-5 w-5 text-[#00A1D6]" />
-          </a>
-        </span>
-        <span v-if="acc.zh">
-          <a :href="acc.zh" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:zhihu" class="h-5 w-5 text-[#0084FF]" />
-          </a>
-        </span>
-      </div>
+      <!-- 中国社交媒体 -->
+      <span v-if="acc.wx">
+        <a :href="acc.wx" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="simple-icons:wechat" class="h-5 w-5 text-[#07C160]" />
+        </a>
+      </span>
+      <span v-if="acc.dy">
+        <a :href="acc.dy" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="simple-icons:tiktok" class="h-5 w-5" />
+        </a>
+      </span>
+      <span v-if="acc.xhs">
+        <a :href="acc.xhs" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="ri:book-2-fill" class="h-5 w-5 text-[#FE2C55]" />
+        </a>
+      </span>
+      <span v-if="acc.wb">
+        <a :href="acc.wb" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="simple-icons:sinaweibo" class="h-5 w-5 text-[#E6162D]" />
+        </a>
+      </span>
+      <span v-if="acc.bl">
+        <a :href="acc.bl" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="simple-icons:bilibili" class="h-5 w-5 text-[#00A1D6]" />
+        </a>
+      </span>
+      <span v-if="acc.zh">
+        <a :href="acc.zh" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="simple-icons:zhihu" class="h-5 w-5 text-[#0084FF]" />
+        </a>
+      </span>
+
+      <!-- 国际社交媒体 -->
+      <span v-if="acc.f">
+        <a :href="acc.f" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="simple-icons:meta" class="h-5 w-5 text-[#0668E1]" />
+        </a>
+      </span>
+      <span v-if="acc.t">
+        <a :href="acc.t" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="simple-icons:x" class="h-5 w-5" />
+        </a>
+      </span>
+      <span v-if="acc.ig">
+        <a :href="acc.ig" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="simple-icons:instagram" class="h-5 w-5 text-[#E1306C]" />
+        </a>
+      </span>
+      <span v-if="acc.gh">
+        <a :href="acc.gh" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="simple-icons:github" class="h-5 w-5 text-[#181717]" />
+        </a>
+      </span>
+      <span v-if="acc.tg">
+        <a :href="acc.tg" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="simple-icons:telegram" class="h-5 w-5 text-[#0088CC]" />
+        </a>
+      </span>
+      <span v-if="acc.l">
+        <a :href="acc.l" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="simple-icons:linkedin" class="h-5 w-5 text-[#0077B5]" />
+        </a>
+      </span>
+      <span v-if="acc.e">
+        <a :href="'mailto:' + acc.e" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="logos:google-gmail" class="h-5 w-5" />
+        </a>
+      </span>
+      <span v-if="acc.w">
+        <a :href="'https://wa.me/' + acc.w" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="simple-icons:whatsapp" class="h-5 w-5 text-[#25D366]" />
+        </a>
+      </span>
+      <span v-if="acc.y">
+        <a :href="acc.y" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
+          <icon name="simple-icons:youtube" class="h-5 w-5 text-[#FF0000]" />
+        </a>
+      </span>
     </div>
     <div v-if="acc.ls?.length" class="space-y-4 px-4 relative z-10 max-w-md mx-auto">
       <a
@@ -226,23 +235,10 @@ const handleImageError = (link) => {
 
 /* 头像发光效果 */
 .avatar-container {
+  width: 128px;
+  height: 128px;
   position: relative;
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-}
-
-.avatar-container::before {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  background: linear-gradient(45deg, #e2e8f0, #cbd5e1, #e2e8f0);
-  border-radius: 50%;
-  z-index: -1;
-  animation: glowPulse 2s ease-in-out infinite;
+  margin: 0 auto;
 }
 
 .avatar-image {
@@ -250,7 +246,6 @@ const handleImageError = (link) => {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid white;
 }
 
 /* 毛玻璃卡片效果 */
@@ -384,5 +379,19 @@ h1 {
 
 p {
   color: #4b5563 !important;
+}
+
+/* 添加渐变动画 */
+@keyframes gradientSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: gradientSpin 8s linear infinite;
 }
 </style>
