@@ -1,67 +1,50 @@
----
-Build and Ship Nuxt 3 fullstack starter apps with Auth, DB, Payments, Email & File storage 
+# Antenna Share
 
-Try [Supersaas today](https://supersaas.dev)
----
+一个简洁优雅的个人主页生成工具。在这里，你可以创建属于自己的数字名片，展示你的社交媒体链接和个性化内容。
 
+## 🌟 特性
 
-[<img src="https://essentials.supersaas.dev/supersaas-banner.png">](https://supersaas.dev?ref=github-onelink)
+- 🎨 多种精美主题
+  - 简约风格
+  - 新春特别版
+  - 更多主题开发中...
+- 🔗 支持多种社交媒体平台
+  - Meta
+  - X (Twitter)
+  - Instagram
+  - Github
+  - 电报
+  - 领英
+- 📱 完美适配移动端
+- ✨ 流畅的动画效果
+- 🔒 无需注册，即时预览
 
-# Onelink
+## 🚀 快速开始
 
-Onelink is an experimental link-in-bio tool, where the data lives in the URL. 
+访问 [Antenna Share](https://antenna-share.incidental.site/) 开始创建你的个人主页：
 
+1. 填写你的基本信息（名称、简介）
+2. 添加你的社交媒体链接
+3. 选择喜欢的主题
+4. 点击分享按钮获取你的专属链接
 
+## 🎨 主题展示
 
-![Screenshot2023-01-30 at 00 40 04@2x](https://user-images.githubusercontent.com/15716057/215350057-5fbf81f5-5f33-4cbe-98ba-0ced8b3c09c8.jpg)
+### 简约风格
+清新简约的设计风格，突出内容的呈现。
 
-> **Note**
-> Since the URL can become very long, it's better to use a link shortener like https://dub.co
+### 新春特别版
+- 红包样式的视觉设计
+- 新年气氛的动画效果
+- 春节元素的装饰点缀
 
-Here's a demo page
-https://onelink-nu.vercel.app/1?data=eyJuIjoiSm9obiBTbm93IiwiZCI6IknigJltIEpvaG4gU25vdywgdGhlIGtpbmcgaW4gdGhlIG5vcnRoLiBJIGtub3cgTm90aGluZy4iLCJpIjoiaHR0cHM6Ly9pLmluc2lkZXIuY29tLzU2NzQzZmFkNzJmMmMxMmEwMDhiNmNjMCIsImYiOiJodHRwczovL3d3dy5mYWNlYm9vay5jb20vam9obl9zbm93IiwidCI6Imh0dHBzOi8vdHdpdHRlci5jb20vam9obl9zbm93IiwiaWciOiJodHRwczovL3d3dy5pbnN0YWdyYW0uY29tL2pvaG5fc25vdyIsImUiOiJtYWlsQGpvaG5fc25vdy5jYyIsImdoIjoiaHR0cHM6Ly9naXRodWIuY29tL2pvaG5fc25vdyIsInRnIjoiaHR0cHM6Ly90Lm1lL2pvaG5fc25vdyIsInciOiIrOTE4ODg4ODg4ODg4IiwieSI6Imh0dHBzOi8veW91dHViZS5jb20vQGpvaG5fc25vdyIsImwiOiJodHRwczovL2xpbmtlZGluLmNvbS9qb2huX3Nub3ciLCJscyI6W3sibCI6Ik15IFdlYnNpdGUiLCJpIjoicGg6Z2xvYmUtZHVvdG9uZSIsInUiOiJodHRwczovL2V4YW1wbGUuY29tIn0seyJsIjoiQW1hem9uIHdpc2hsaXN0IiwiaSI6ImFudC1kZXNpZ246YW1hem9uLW91dGxpbmVkIiwidSI6Imh0dHBzOi8vYW1hem9uLmluIn0seyJsIjoiUmVhY3QgSlMgY291cnNlIiwiaSI6Imdyb21tZXQtaWNvbnM6cmVhY3RqcyIsInUiOiJodHRwczovL3JlYWN0anMub3JnLyJ9LHsibCI6IkRvbmF0ZSBmb3Igb3VyIGNhdXNlIiwiaSI6Imljb25vaXI6ZG9uYXRlIiwidSI6Imh0dHBzOi8vd2hvLmludCJ9LHsibCI6IkRvd25sb2FkIG15IHJlc3VtZSIsImkiOiJwaDpmaWxlLXBkZiIsInUiOiJodHRwczovL2dvb2dsZS5jb20ifV19
+## 📝 反馈与建议
 
-The data is converted to a base 64 string which we onelink uses as a query parameter. I have tried to reduce the json keys to be as small as possible
+如果你有任何问题或建议，欢迎通过以下方式联系我们：
 
-Roadmap.
-1. Templates - make different templates, the `/1` after the host is basically a template here.
-2. Refactor code - a lot of repeated boilerplate code is added here - refactor it properly.
+- 在 [Github](https://github.com/incidental-company/antenna-share/issues) 提交 Issue
+- 访问 [Antenna 官网](https://antenna.incidental.site/)
 
-## Setup locally
+## 📜 开源协议
 
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+本项目采用 MIT 协议开源。
