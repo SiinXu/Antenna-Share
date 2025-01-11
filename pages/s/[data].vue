@@ -13,7 +13,7 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { Base64 } from 'js-base64';
-import SimpleTemplate from '~/components/Templates/Simple.vue';
+import SimpleTemplate from '../../components/Templates/Simple.vue';
 
 const route = useRoute();
 const theme = ref('light');
