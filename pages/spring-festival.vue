@@ -168,7 +168,11 @@ function prefillDemoData() {
 }
 
 async function publish() {
-  const encoded = await encodeData(data.value);
+  const shareData = {
+    ...data.value,
+    theme: 'spring-festival'  // 添加主题信息
+  };
+  const encoded = await encodeData(shareData);
   navigateTo(`/s/${encoded}`);
 }
 </script>

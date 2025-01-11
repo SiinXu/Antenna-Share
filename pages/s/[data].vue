@@ -1,7 +1,10 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-50">
+  <div class="min-h-screen flex items-center justify-center" :class="[
+    theme === 'light' ? 'bg-gray-50' : theme === 'spring-festival' ? 'bg-red-900' : 'bg-gray-900'
+  ]">
     <div class="w-[340px] relative">
-      <SimpleTemplate v-if="data" :acc="data" :theme="theme" />
+      <SpringFestivalTemplate v-if="theme === 'spring-festival' && data" :acc="data" />
+      <SimpleTemplate v-else-if="data" :acc="data" :theme="theme" />
       <div v-else class="flex items-center justify-center h-screen">
         <p class="text-gray-500">{{ error || '加载中...' }}</p>
       </div>
@@ -12,6 +15,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import SimpleTemplate from '../../components/Templates/Simple.vue';
+import SpringFestivalTemplate from '../../components/Templates/SpringFestival.vue';
 import { decodeData } from '../../utils/encode';
 
 const route = useRoute();
