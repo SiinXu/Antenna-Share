@@ -2,8 +2,8 @@
   <div class="min-h-full">
     <header class="bg-white shadow">
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex justify-between items-center">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900">
-          Share
+        <h1 class="text-3xl font-bold tracking-tight bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent gradient-animate">
+          Antenna
         </h1>
         <div class="flex items-center gap-4">
           <button
@@ -201,3 +201,22 @@ const publish = () => {
   }
 };
 </script>
+
+<style>
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-animate {
+  background-size: 200% auto;
+  animation: gradient 3s ease infinite;
+}
+</style>
