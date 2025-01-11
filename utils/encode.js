@@ -1,7 +1,9 @@
+import { Base64 } from 'js-base64';
+
 export const encodeData = (data) => {
   try {
     const jsonStr = JSON.stringify(data);
-    const base64 = btoa(encodeURIComponent(jsonStr));
+    const base64 = Base64.encode(encodeURIComponent(jsonStr));
     return base64;
   } catch (error) {
     console.error('Error encoding data:', error);
@@ -11,7 +13,7 @@ export const encodeData = (data) => {
 
 export const decodeData = (base64) => {
   try {
-    const jsonStr = decodeURIComponent(atob(base64));
+    const jsonStr = decodeURIComponent(Base64.decode(base64));
     const data = JSON.parse(jsonStr);
     return data;
   } catch (error) {
