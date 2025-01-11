@@ -1,7 +1,5 @@
 {
-  "framework": "nuxt",
   "buildCommand": "nuxt build",
   "devCommand": "nuxt dev",
-  "outputDirectory": ".output",
-  "ignoreCommand": "false"
+  "outputDirectory": ".output"
 }
