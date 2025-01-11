@@ -278,6 +278,48 @@
             />
           </div>
         </div>
+        <div>
+          <label for="bilibili" class="block text-sm font-medium text-gray-700"
+            >哔哩哔哩</label
+          >
+          <div class="mt-1 flex rounded-md shadow-sm">
+            <span
+              class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500"
+            >
+              <icon name="simple-icons:bilibili" class="w-5 h-5" />
+            </span>
+            <input
+              type="search"
+              name="bilibili"
+              id="bilibili"
+              :value="bilibili"
+              @input="$emit('update:bilibili', $event.target.value)"
+              class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              placeholder="例如：space.bilibili.com/123456"
+            />
+          </div>
+        </div>
+        <div>
+          <label for="zhihu" class="block text-sm font-medium text-gray-700"
+            >知乎</label
+          >
+          <div class="mt-1 flex rounded-md shadow-sm">
+            <span
+              class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500"
+            >
+              <icon name="simple-icons:zhihu" class="w-5 h-5" />
+            </span>
+            <input
+              type="search"
+              name="zhihu"
+              id="zhihu"
+              :value="zhihu"
+              @input="$emit('update:zhihu', $event.target.value)"
+              class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              placeholder="例如：zhihu.com/people/123456"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </base-form-section>
@@ -296,6 +338,8 @@ const props = defineProps([
   "wechat",
   "douyin",
   "weibo",
-  "xiaohongshu"
+  "xiaohongshu",
+  "bilibili",
+  "zhihu"
 ]);
 </script>

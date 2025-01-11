@@ -1,7 +1,7 @@
 {
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": ">=20.x"
   },
   "scripts": {
     "build": "nuxt build",
@@ -24,5 +24,6 @@
     "floating-vue": "^2.0.0-beta.24",
     "js-base64": "^3.7.5",
     "vuedraggable": "^4.1.0"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

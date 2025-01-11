@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: "media",
+  darkMode: 'class',
   theme: {
     fontFamily: {
       sans: [
@@ -69,5 +69,7 @@ module.exports = {
     "./plugins/**/*.{js,ts}",
     "./App.{js,ts,vue}",
     "./app.{js,ts,vue}",
+    "./app.vue",
+    "./error.vue",
   ],
 };
