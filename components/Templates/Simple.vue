@@ -2,7 +2,7 @@
   <div class="min-h-full flex flex-col" :class="[
     theme === 'light' ? 'bg-gradient' : 'bg-gray-900'
   ]">
-    <div class="flex-1">
+    <div class="flex-1 relative">
       <!-- 头像区域 -->
       <div class="relative">
         <div class="aspect-[2/1] glow-bg">
@@ -197,7 +197,7 @@
       </div>
 
       <!-- Antenna 标记 -->
-      <div class="mt-12 px-6 pb-8 text-center">
+      <div class="mt-12 mb-8 px-6 text-center">
         <a
           href="https://antenna.incidental.site/"
           target="_blank"
