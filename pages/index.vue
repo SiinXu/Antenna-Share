@@ -57,7 +57,17 @@
         </div>
       </div>
       <div class="relative">
-        <div class="absolute right-4 top-4 z-10">
+        <div class="absolute right-4 top-4 z-10 flex gap-2">
+          <button
+            @click="previewTheme = previewTheme === 'spring-festival' ? 'light' : 'spring-festival'"
+            class="rounded-lg p-2 bg-white hover:bg-gray-50 shadow-sm border border-gray-200 transition-colors"
+          >
+            <icon
+              name="ph:confetti-bold"
+              class="h-4 w-4"
+              :class="previewTheme === 'spring-festival' ? 'text-red-500' : 'text-gray-600'"
+            />
+          </button>
           <button
             @click="previewTheme = previewTheme === 'light' ? 'dark' : 'light'"
             class="rounded-lg p-2 bg-white hover:bg-gray-50 shadow-sm border border-gray-200 transition-colors"

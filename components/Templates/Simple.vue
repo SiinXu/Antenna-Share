@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-full flex flex-col" :class="[
-    theme === 'light' ? 'bg-gradient' : 'bg-gray-900'
+    theme === 'light' ? 'bg-gradient' : theme === 'spring-festival' ? 'bg-gradient-spring-festival' : 'bg-gray-900'
   ]">
-    <div class="flex-1 relative">
+    <div class="flex-1 relative flex flex-col">
       <!-- 头像区域 -->
       <div class="relative">
         <div class="aspect-[2/1] glow-bg">
@@ -18,7 +18,7 @@
         <div class="absolute inset-x-0 bottom-0 translate-y-1/2 flex justify-center">
           <div :class="[
             'h-24 w-24 rounded-full ring-4',
-            theme === 'light' ? 'ring-white' : 'ring-gray-900'
+            theme === 'light' ? 'ring-white' : theme === 'spring-festival' ? 'ring-amber-300' : 'ring-gray-900'
           ]">
             <img
               v-if="acc.i"
@@ -34,109 +34,108 @@
       <!-- 名字和简介 -->
       <div class="mt-16 px-6 text-center">
         <h1 class="text-2xl font-bold" :class="[
-          theme === 'light' ? 'text-gray-900' : 'text-white'
+          theme === 'light' ? 'text-gray-900' : theme === 'spring-festival' ? 'text-amber-100' : 'text-white'
         ]">{{ acc.n || '未设置名称' }}</h1>
         <p class="mt-2 text-sm" :class="[
-          theme === 'light' ? 'text-gray-500' : 'text-gray-400'
+          theme === 'light' ? 'text-gray-500' : theme === 'spring-festival' ? 'text-amber-200/80' : 'text-gray-400'
         ]">{{ acc.d || '未设置简介' }}</p>
       </div>
 
       <!-- 社交媒体链接 -->
       <div
         v-if="!allSocialLinksAreEmpty"
-        class="mt-8 flex flex-wrap justify-center gap-2 px-6"
+        class="mt-6 px-6"
       >
-        <!-- 中国社交媒体 -->
-        <span v-if="acc.wx">
-          <a :href="acc.wx" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:wechat" class="h-5 w-5 text-[#07C160]" />
-          </a>
-        </span>
-        <span v-if="acc.dy">
-          <a :href="acc.dy" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:tiktok" class="h-5 w-5" :class="[
-              theme === 'light' ? 'text-gray-900' : 'text-white'
-            ]" />
-          </a>
-        </span>
-        <span v-if="acc.xhs">
-          <a :href="acc.xhs" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="ri:book-2-fill" class="h-5 w-5 text-[#FE2C55]" />
-          </a>
-        </span>
-        <span v-if="acc.wb">
-          <a :href="acc.wb" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:sinaweibo" class="h-5 w-5 text-[#E6162D]" />
-          </a>
-        </span>
-        <span v-if="acc.bl">
-          <a :href="acc.bl" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:bilibili" class="h-5 w-5 text-[#00A1D6]" />
-          </a>
-        </span>
-        <span v-if="acc.zh">
-          <a :href="acc.zh" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="ri:zhihu-fill" class="h-5 w-5 text-[#0084FF]" />
-          </a>
-        </span>
-
-        <!-- 国际社交媒体 -->
-        <span v-if="acc.f">
-          <a :href="acc.f" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:facebook" class="h-5 w-5 text-[#1877F2]" />
-          </a>
-        </span>
-        <span v-if="acc.t">
-          <a :href="acc.t" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:x" class="h-5 w-5" :class="[
-              theme === 'light' ? 'text-gray-900' : 'text-white'
-            ]" />
-          </a>
-        </span>
-        <span v-if="acc.ig">
-          <a :href="acc.ig" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:instagram" class="h-5 w-5 text-[#E4405F]" />
-          </a>
-        </span>
-        <span v-if="acc.gh">
-          <a :href="acc.gh" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:github" class="h-5 w-5" :class="[
-              theme === 'light' ? 'text-gray-900' : 'text-white'
-            ]" />
-          </a>
-        </span>
-        <span v-if="acc.tg">
-          <a :href="acc.tg" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:telegram" class="h-5 w-5 text-[#26A5E4]" />
-          </a>
-        </span>
-        <span v-if="acc.l">
-          <a :href="acc.l" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:linkedin" class="h-5 w-5 text-[#0A66C2]" />
-          </a>
-        </span>
-        <span v-if="acc.e">
-          <a :href="`mailto:${acc.e}`" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:gmail" class="h-5 w-5 text-[#EA4335]" />
-          </a>
-        </span>
-        <span v-if="acc.w">
-          <a :href="`https://wa.me/${acc.w}`" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:whatsapp" class="h-5 w-5 text-[#25D366]" />
-          </a>
-        </span>
-        <span v-if="acc.y">
-          <a :href="acc.y" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-80">
-            <icon name="simple-icons:youtube" class="h-5 w-5 text-[#FF0000]" />
-          </a>
-        </span>
+        <div class="flex flex-wrap justify-center gap-1.5 py-2">
+          <span v-if="acc.wx">
+            <a :href="acc.wx" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="simple-icons:wechat" class="h-4 w-4 text-[#07C160]" />
+            </a>
+          </span>
+          <span v-if="acc.dy">
+            <a :href="acc.dy" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="simple-icons:tiktok" class="h-4 w-4" :class="[
+                theme === 'light' ? 'text-gray-900' : theme === 'spring-festival' ? 'text-amber-200' : 'text-white'
+              ]" />
+            </a>
+          </span>
+          <span v-if="acc.xhs">
+            <a :href="acc.xhs" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="ri:book-2-fill" class="h-4 w-4 text-[#FE2C55]" />
+            </a>
+          </span>
+          <span v-if="acc.wb">
+            <a :href="acc.wb" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="simple-icons:sinaweibo" class="h-4 w-4 text-[#E6162D]" />
+            </a>
+          </span>
+          <span v-if="acc.bl">
+            <a :href="acc.bl" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="simple-icons:bilibili" class="h-4 w-4 text-[#00A1D6]" />
+            </a>
+          </span>
+          <span v-if="acc.zh">
+            <a :href="acc.zh" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="ri:zhihu-fill" class="h-4 w-4 text-[#0084FF]" />
+            </a>
+          </span>
+          <span v-if="acc.f">
+            <a :href="acc.f" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="simple-icons:facebook" class="h-4 w-4 text-[#1877F2]" />
+            </a>
+          </span>
+          <span v-if="acc.t">
+            <a :href="acc.t" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="simple-icons:x" class="h-4 w-4" :class="[
+                theme === 'light' ? 'text-gray-900' : theme === 'spring-festival' ? 'text-amber-200' : 'text-white'
+              ]" />
+            </a>
+          </span>
+          <span v-if="acc.ig">
+            <a :href="acc.ig" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="simple-icons:instagram" class="h-4 w-4 text-[#E4405F]" />
+            </a>
+          </span>
+          <span v-if="acc.gh">
+            <a :href="acc.gh" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="simple-icons:github" class="h-4 w-4" :class="[
+                theme === 'light' ? 'text-gray-900' : theme === 'spring-festival' ? 'text-amber-200' : 'text-white'
+              ]" />
+            </a>
+          </span>
+          <span v-if="acc.tg">
+            <a :href="acc.tg" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="simple-icons:telegram" class="h-4 w-4 text-[#26A5E4]" />
+            </a>
+          </span>
+          <span v-if="acc.l">
+            <a :href="acc.l" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="simple-icons:linkedin" class="h-4 w-4 text-[#0A66C2]" />
+            </a>
+          </span>
+          <span v-if="acc.e">
+            <a :href="`mailto:${acc.e}`" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="simple-icons:gmail" class="h-4 w-4 text-[#EA4335]" />
+            </a>
+          </span>
+          <span v-if="acc.w">
+            <a :href="`https://wa.me/${acc.w}`" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="simple-icons:whatsapp" class="h-4 w-4 text-[#25D366]" />
+            </a>
+          </span>
+          <span v-if="acc.y">
+            <a :href="acc.y" target="_blank" rel="noopener noreferrer" class="p-0.5 hover:opacity-80">
+              <icon name="simple-icons:youtube" class="h-4 w-4 text-[#FF0000]" />
+            </a>
+          </span>
+        </div>
       </div>
 
       <!-- 自定义链接 -->
       <div v-if="acc.ls?.length" class="mt-8 px-6">
         <div :class="[
           'rounded-2xl p-4 space-y-2',
-          theme === 'light' ? 'bg-gray-50' : 'bg-gray-800'
+          theme === 'light' ? 'bg-gray-50' : theme === 'spring-festival' ? 'bg-red-900/20' : 'bg-gray-800'
         ]">
           <a
             v-for="link in acc.ls"
@@ -148,7 +147,9 @@
               'flex items-center gap-3 rounded-xl p-3 transition-colors',
               theme === 'light' 
                 ? 'hover:bg-gray-100 text-gray-900' 
-                : 'hover:bg-gray-700 text-white'
+                : theme === 'spring-festival'
+                  ? 'hover:bg-red-900/30 text-amber-100'
+                  : 'hover:bg-gray-700 text-white'
             ]"
           >
             <div class="h-6 w-6 shrink-0">
@@ -164,16 +165,16 @@
                   :name="link.i"
                   :class="[
                     'h-full w-full',
-                    theme === 'light' ? 'text-gray-600' : 'text-gray-300'
+                    theme === 'light' ? 'text-gray-600' : theme === 'spring-festival' ? 'text-amber-200' : 'text-gray-300'
                   ]"
                 />
                 <div v-else :class="[
                   'grid h-full w-full place-items-center rounded',
-                  theme === 'light' ? 'bg-gray-100' : 'bg-gray-700'
+                  theme === 'light' ? 'bg-gray-100' : theme === 'spring-festival' ? 'bg-red-900/30' : 'bg-gray-700'
                 ]">
                   <icon name="ph:link-bold" :class="[
                     'h-4 w-4',
-                    theme === 'light' ? 'text-gray-400' : 'text-gray-300'
+                    theme === 'light' ? 'text-gray-400' : theme === 'spring-festival' ? 'text-amber-200/70' : 'text-gray-300'
                   ]" />
                 </div>
               </template>
@@ -190,21 +191,21 @@
             </div>
             <icon name="ph:arrow-up-right-bold" :class="[
               'h-4 w-4 shrink-0',
-              theme === 'light' ? 'text-gray-400' : 'text-gray-300'
+              theme === 'light' ? 'text-gray-400' : theme === 'spring-festival' ? 'text-amber-200/70' : 'text-gray-300'
             ]" />
           </a>
         </div>
       </div>
 
       <!-- Antenna 标记 -->
-      <div class="mt-12 mb-8 px-6 text-center">
+      <div class="mt-auto pt-16 px-6 pb-8 text-center">
         <a
           href="https://antenna.incidental.site/"
           target="_blank"
           rel="noopener noreferrer"
           :class="[
             'text-sm hover:opacity-80',
-            theme === 'light' ? 'text-gray-400' : 'text-gray-500'
+            theme === 'light' ? 'text-gray-400' : theme === 'spring-festival' ? 'text-amber-200/70' : 'text-gray-500'
           ]"
         >
           Made with Antenna
@@ -222,7 +223,7 @@ const props = defineProps({
     type: Object,
     required: true,
     validator(value) {
-      return true;
+      return value !== null && typeof value === 'object';
     }
   },
   theme: {
@@ -251,10 +252,11 @@ const allSocialLinksAreEmpty = computed(() => {
   );
 });
 
+const theme = computed(() => props.theme);
+
 function isImageUrl(url) {
   if (!url) return false;
-  const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.svg', '.webp'];
-  return imageExtensions.some(ext => url.toLowerCase().endsWith(ext));
+  return url.match(/\.(jpeg|jpg|gif|png|webp)$/i) != null;
 }
 
 function getDomain(url) {
@@ -263,7 +265,7 @@ function getDomain(url) {
     const domain = new URL(url).hostname;
     return domain.replace(/^www\./, '');
   } catch (e) {
-    return url;
+    return '';
   }
 }
 
@@ -277,6 +279,10 @@ function handleImageError(link) {
 <style scoped>
 .bg-gradient {
   background: linear-gradient(135deg, #dbeafe 0%, white 40%, #e0e7ff 100%);
+}
+
+.bg-gradient-spring-festival {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
 }
 
 .glow-bg {
@@ -359,5 +365,12 @@ function handleImageError(link) {
 @keyframes float6 {
   0%, 100% { transform: translate(30%, 50%) scale(1.2); }
   50% { transform: translate(70%, 10%) scale(1); }
+}
+
+/* 新春主题的图标渐变效果 */
+:deep(.spring-festival-icon) {
+  background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 </style>
