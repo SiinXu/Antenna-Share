@@ -57,26 +57,23 @@
         </div>
       </div>
       <div class="relative">
-        <div class="absolute right-4 top-4 z-10 flex gap-2">
-          <button
-            @click="previewTheme = previewTheme === 'spring-festival' ? 'light' : 'spring-festival'"
-            class="rounded-lg p-2 bg-white hover:bg-gray-50 shadow-sm border border-gray-200 transition-colors"
+        <div class="absolute right-4 top-4 z-10">
+          <select 
+            v-model="previewTheme"
+            class="w-32 rounded-lg border-0 py-1.5 pl-3 pr-10 
+                   text-gray-700
+                   bg-white/70 backdrop-blur-md backdrop-saturate-150
+                   ring-1 ring-blue-200/50 
+                   focus:ring-2 focus:ring-blue-400/50
+                   hover:ring-blue-300/50 transition-all duration-300
+                   sm:text-sm sm:leading-6
+                   appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20stroke%3D%22%23666666%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.5%22%20d%3D%22M6%208l4%204%204-4%22%2F%3E%3C%2Fsvg%3E')] bg-[position:right_0.5rem_center] bg-[length:1.5em_1.5em] bg-no-repeat
+                   shadow-sm"
           >
-            <icon
-              name="ph:confetti-bold"
-              class="h-4 w-4"
-              :class="previewTheme === 'spring-festival' ? 'text-red-500' : 'text-gray-600'"
-            />
-          </button>
-          <button
-            @click="previewTheme = previewTheme === 'light' ? 'dark' : 'light'"
-            class="rounded-lg p-2 bg-white hover:bg-gray-50 shadow-sm border border-gray-200 transition-colors"
-          >
-            <icon
-              :name="previewTheme === 'light' ? 'ph:sun-bold' : 'ph:moon-bold'"
-              class="h-4 w-4 text-gray-600"
-            />
-          </button>
+            <option value="light">默认主题</option>
+            <option value="dark">深色主题</option>
+            <option value="spring-festival">新春主题</option>
+          </select>
         </div>
         <div class="h-screen flex flex-col">
           <div class="flex-1 flex items-center justify-center">
