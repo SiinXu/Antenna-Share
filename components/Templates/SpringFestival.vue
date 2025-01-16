@@ -109,6 +109,7 @@
 
       <!-- Made with Antenna -->
       <div class="mt-auto pt-16 px-6 pb-8 text-center">
+      <div class="absolute inset-x-0 bottom-4 text-center">
         <a
           href="https://antenna.incidental.site/"
           target="_blank"
