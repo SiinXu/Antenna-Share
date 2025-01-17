@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- 中心圆形 -->
+  <circle cx="50" cy="50" r="40" fill="none" stroke="#FFD700" stroke-width="2"/>
+  
+  <!-- 内部装饰线条 -->
+  <path d="M50 50l28.3 -28.3M50 50l28.3 28.3M50 50l-28.3 28.3M50 50l-28.3 -28.3" stroke="#FFD700" stroke-width="2"/>
+  
+  <!-- 四角装饰 -->
+  <path d="M20 20c5.5 0 10-4.5 10-10M80 20c-5.5 0-10-4.5-10-10M20 80c5.5 0 10 4.5 10 10M80 80c-5.5 0-10 4.5-10 10" stroke="#FFD700" stroke-width="2" fill="none"/>
+  
+  <!-- 中心点 -->
+  <circle cx="50" cy="50" r="3" fill="#FFD700"/>
+</svg>

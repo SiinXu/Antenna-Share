@@ -73,6 +73,7 @@
             <option value="light">默认主题</option>
             <option value="dark">深色主题</option>
             <option value="spring-festival">新春主题</option>
+            <option value="chinese-new-year">春节主题</option>
           </select>
         </div>
         <div class="h-screen flex flex-col">

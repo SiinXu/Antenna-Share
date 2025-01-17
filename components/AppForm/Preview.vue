@@ -12,6 +12,7 @@
 import { computed } from 'vue';
 import SimpleTemplate from '~/components/Templates/Simple.vue';
 import SpringFestival from '~/components/Templates/SpringFestival.vue';
+import ChineseNewYear from '~/components/Templates/NewChineseNewYear.vue';
 
 const props = defineProps({
   data: {
@@ -25,6 +26,13 @@ const props = defineProps({
 });
 
 const currentTemplate = computed(() => {
-  return props.theme === 'spring-festival' ? SpringFestival : SimpleTemplate;
+  switch (props.theme) {
+    case 'spring-festival':
+      return SpringFestival;
+    case 'chinese-new-year':
+      return ChineseNewYear;
+    default:
+      return SimpleTemplate;
+  }
 });
 </script>
